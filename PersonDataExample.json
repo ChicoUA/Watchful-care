@@ -14,5 +14,7 @@
 	"idade": "67",
 	"nome": "Alberto Souto", 
 	"tel_emergencia": "912233344",
-	"notas": "Operacao ao ombro esquerdo dia 7-6-2012"
+	"notas":  [
+		{"nota": "Operacao ao ombro esquerdo dia 07-09-2012"}
+	],	
 }
