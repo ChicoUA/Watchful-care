@@ -1,0 +1,18 @@
+{
+	"morada": 
+		{
+		"numero": "12", 
+		"terra": "Guarda",
+		"distrito": "Guarda",
+		"rua": "Parque da Bela Vista", 
+		"codigo_postal": "3100-100"
+	},  
+	"sexo": "Masculino", 
+	"dados_vitais": [
+		{"pulsacao_bpm": "90", "respiracao_mpm": "18", "temperatura_C": 37}
+	],	
+	"idade": "67",
+	"nome": "Alberto Souto", 
+	"tel_emergencia": "912233344",
+	"notas": "Operacao ao ombro esquerdo dia 7-6-2012"
+}
