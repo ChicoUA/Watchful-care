@@ -1,6 +1,8 @@
 package ies.projeto.watchful_care.config;
 
 import ies.projeto.watchful_care.Notification;
+import org.springframework.stereotype.Component;
+
 
 @Component
 public class RabbitMqListener {
