@@ -43,7 +43,7 @@ public class gateway
 			System.out.println(listOfgenerators);
 			byte[] data = listOfgenerators.toString().getBytes();
 		    
-		    channel.basicPublish("", "message_queue", null, data);
+		    channel.basicPublish("", "message_queue.anonymous.j3A0yt9ZTZaxEh0hnWLocg", null, data);
 		    System.out.println("Message sent to queue");
 		}
     }
