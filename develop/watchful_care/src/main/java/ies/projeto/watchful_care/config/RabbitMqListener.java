@@ -3,6 +3,8 @@ package ies.projeto.watchful_care.config;
 import ies.projeto.watchful_care.Notification;
 import org.springframework.stereotype.Component;
 
+import com.google.gson.Gson;
+
 
 @Component
 public class RabbitMqListener {

@@ -9,11 +9,11 @@ public class test {
     private OutputStreamWriter out = null;
 
 	public static void main(String[] args) throws InterruptedException, UnknownHostException, IOException {
-		Socket socket = new Socket("localhost", 7776); 
+		Socket socket = new Socket("localhost", 7777); 
 		System.out.println("Connected!");
 		
 		OutputStream outputStream = socket.getOutputStream();
-		ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+		ObjectOutputStream out = new ObjectOutputStream(outputStream);
 		
 		generator gen1 = new generator();
 		generator gen2 = new generator();
@@ -31,9 +31,9 @@ public class test {
 			System.out.println(gen2);
 			System.out.println(gen3);
 			
-			objectOutputStream.writeObject(gen1);
-			objectOutputStream.writeObject(gen2);
-			objectOutputStream.writeObject(gen3);
+			out.writeObject(gen1);
+			out.writeObject(gen2);
+			out.writeObject(gen3);
 			
 			gen1.generateNewData();
 			gen2.generateNewData();
