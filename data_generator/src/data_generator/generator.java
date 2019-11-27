@@ -7,13 +7,13 @@ public class generator implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static int id = 0;
+	private static int id = 1;
 	private int identifier;
 	private data dt;
 	
 	@Override
 	public String toString() {
-		return "generator [identifier=" + identifier + ", dt=" + dt + "]";
+		return "" + identifier + "" + dt;
 	}
 
 	public generator() {

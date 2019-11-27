@@ -55,7 +55,7 @@ public class data implements Serializable{
 
 	@Override
 	public String toString() {
-		return "data [temp=" + temp + ", bpm=" + bpm + ", latitude=" + latitude + ", longitude=" + longitude + "]";
+		return "/" + temp + "/" + bpm + "/" + latitude + "/" + longitude;
 	}
 
 	

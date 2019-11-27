@@ -15,7 +15,7 @@ import data_generator.generator;
 
 public class gateway 
 {
-    public static void main( String[] args ) throws IOException, ClassNotFoundException, TimeoutException, KeyManagementException, NoSuchAlgorithmException, URISyntaxException
+    public static void main( String[] args ) throws IOException, ClassNotFoundException, TimeoutException, KeyManagementException, NoSuchAlgorithmException, URISyntaxException, InterruptedException
     {
     	ConnectionFactory factory = new ConnectionFactory();
     	factory.setUsername("admin");
@@ -28,7 +28,7 @@ public class gateway
     	
     	channel.queueDeclare("message_queue", false, false, false, null);
     	
-    	ServerSocket ss = new ServerSocket(7776);
+    	ServerSocket ss = new ServerSocket(7779);
 		System.out.println("ServerSocket awaiting connections...");
 		
 		Socket socket = ss.accept();
@@ -36,15 +36,17 @@ public class gateway
 		
 		InputStream inputStream = socket.getInputStream();
 		ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-		System.out.println("hey");
+		
 		
 		while(true) {
+			
 			generator listOfgenerators = (generator) objectInputStream.readObject();
 			System.out.println(listOfgenerators);
 			byte[] data = listOfgenerators.toString().getBytes();
 		    
-		    channel.basicPublish("", "message_queue.anonymous.qGo5F1FSRuyRTwFUVcbjRA", null, data);
+		    channel.basicPublish("", "message_queue.anonymous.gnBs6h45Tf2jsNrqQc5SOQ", null, data);
 		    System.out.println("Message sent to queue");
+
 		}
     }
 }
