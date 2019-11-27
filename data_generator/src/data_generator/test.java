@@ -9,7 +9,7 @@ public class test {
     private OutputStreamWriter out = null;
 
 	public static void main(String[] args) throws InterruptedException, UnknownHostException, IOException {
-		Socket socket = new Socket("localhost", 7777); 
+		Socket socket = new Socket("localhost", 7776); 
 		System.out.println("Connected!");
 		
 		OutputStream outputStream = socket.getOutputStream();

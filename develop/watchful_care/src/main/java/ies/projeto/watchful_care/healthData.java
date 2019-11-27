@@ -23,4 +23,9 @@ public class healthData{
         this.date=new Date();
 
     }
+
+	public Object setPatient(Patient patient2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

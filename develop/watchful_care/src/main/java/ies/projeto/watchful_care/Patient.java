@@ -9,10 +9,7 @@ import java.util.stream.Stream;
 
 @Data
 @EqualsAndHashCode(exclude = "data")
-
 @Entity
-
-
 public class Patient {
 
     private @Id @GeneratedValue(strategy = GenerationType.AUTO) long id;

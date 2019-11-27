@@ -28,7 +28,7 @@ public class gateway
     	
     	channel.queueDeclare("message_queue", false, false, false, null);
     	
-    	ServerSocket ss = new ServerSocket(7777);
+    	ServerSocket ss = new ServerSocket(7776);
 		System.out.println("ServerSocket awaiting connections...");
 		
 		Socket socket = ss.accept();
@@ -43,7 +43,7 @@ public class gateway
 			System.out.println(listOfgenerators);
 			byte[] data = listOfgenerators.toString().getBytes();
 		    
-		    channel.basicPublish("", "message_queue.anonymous.j3A0yt9ZTZaxEh0hnWLocg", null, data);
+		    channel.basicPublish("", "message_queue.anonymous.qGo5F1FSRuyRTwFUVcbjRA", null, data);
 		    System.out.println("Message sent to queue");
 		}
     }
