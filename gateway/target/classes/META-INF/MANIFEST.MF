@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Built-By: ghost
+Build-Jdk: 11.0.4
 Class-Path: lib/amqp-client-5.7.3.jar lib/slf4j-api-1.7.26.jar
-Build-Jdk: 1.8.0_222
-Created-By: Maven Integration for Eclipse
 Main-Class: com.mypackage.MyClass
+Created-By: Maven Integration for Eclipse
 

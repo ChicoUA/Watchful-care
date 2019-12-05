@@ -1,6 +1,9 @@
 package watchful_care.data_generator.gateway;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 import com.rabbitmq.client.Channel;
@@ -12,9 +15,13 @@ public class test_receiver {
 
 	private final static String QUEUE_NAME = "message_queue";
 	
-	public static void main(String[] args) throws IOException, TimeoutException {
+	public static void main(String[] args) throws IOException, TimeoutException, KeyManagementException, NoSuchAlgorithmException, URISyntaxException {
 		ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+		factory.setUsername("admin");
+    	factory.setPassword("1234");
+    	factory.setVirtualHost("/");
+    	factory.setHost("192.168.80.129");
+    	factory.setPort(5672);
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
