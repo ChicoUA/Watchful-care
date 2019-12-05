@@ -15,7 +15,9 @@ public class test {
 		OutputStream outputStream = socket.getOutputStream();
 		ObjectOutputStream out = new ObjectOutputStream(outputStream);
 		
-		generator gen1 = new generator();
+		System.out.println(args[1]);
+		generator gen1 = new generator((String)args[0], Integer.parseInt(args[1]));
+		
 		/*
 		generator gen2 = new generator();
 		generator gen3 = new generator();
@@ -32,7 +34,7 @@ public class test {
 			gen1.generateNewData();
 
 			
-			Thread.sleep(5000);
+			Thread.sleep(gen1.getBeat());
 		}
 	}
 

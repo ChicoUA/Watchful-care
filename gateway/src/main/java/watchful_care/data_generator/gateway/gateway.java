@@ -15,6 +15,7 @@ import data_generator.generator;
 
 public class gateway 
 {
+	
     public static void main( String[] args ) throws IOException, ClassNotFoundException, TimeoutException, KeyManagementException, NoSuchAlgorithmException, URISyntaxException, InterruptedException
     {
     	ConnectionFactory factory = new ConnectionFactory();
@@ -26,27 +27,24 @@ public class gateway
     	Connection conn = factory.newConnection();
     	Channel channel = conn.createChannel();
     	
+    	channel.exchangeDeclare("fanout_exchange", "fanout");
     	channel.queueDeclare("message_queue", false, false, false, null);
     	
     	ServerSocket ss = new ServerSocket(7779);
 		System.out.println("ServerSocket awaiting connections...");
+    	
+    	while(true) {
+    		
 		
-		Socket socket = ss.accept();
-		System.out.println("Connection from " + socket + "!");
+    		Socket socket = ss.accept();
+    		System.out.println("Connection from " + socket + "!");
+    		
+    		new Thread(new workerThread(socket, "Multithreaded Server", channel)).start();
+    		System.out.println("Ready for new Connection");
 		
-		InputStream inputStream = socket.getInputStream();
-		ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+    	}
 		
 		
-		while(true) {
-			
-			generator listOfgenerators = (generator) objectInputStream.readObject();
-			System.out.println(listOfgenerators);
-			byte[] data = listOfgenerators.toString().getBytes();
-		    
-		    channel.basicPublish("", "message_queue.anonymous.gnBs6h45Tf2jsNrqQc5SOQ", null, data);
-		    System.out.println("Message sent to queue");
-
-		}
+		
     }
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @Entity
 public class healthData{
-    private @Id @GeneratedValue(strategy = GenerationType.AUTO) long id2;
+    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) long id2;
     private int patientId;
     private float temperature;
     private double heartBeat;
