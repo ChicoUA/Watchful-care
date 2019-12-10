@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/db" android:title="Vender" android:icon="@drawable/ic_attach_money_black_24dp"></item>
+    <item android:id="@+id/event" android:title="Os Meus Anuncios" ></item>
+    <item android:id="@+id/search" android:title="Mensagens" ></item>
+    <item android:id="@+id/settings" android:title="Favoritos" ></item>
+    <item android:id="@+id/activities" android:title="O Meu Perfil" ></item>
+    <item android:id="@+id/logout" android:title="Log Out" ></item>
+
+</menu>

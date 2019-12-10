@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">IHC_beta_v4</string>
+    <string name="open">Open--</string>
+    <string name="close">Close--</string>
+	<string name="search_title">Search</string>
+    <string name="search_int">Enter text to search</string>
+</resources>
