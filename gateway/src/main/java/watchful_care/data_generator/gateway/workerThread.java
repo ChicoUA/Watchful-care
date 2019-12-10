@@ -57,7 +57,7 @@ public class workerThread implements Runnable{
 			byte[] data = listOfgenerators.toString().getBytes();
 		    
 		    try {
-				channel.basicPublish("fanout_exchange", "", null, data);
+				channel.basicPublish("fanout_exchange", "message_queue.anonymous.iMLrWkE4Q7KIvOdrOcYO-g", null, data);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
