@@ -20,12 +20,15 @@ public class GreetingController {
 	@Autowired
 	private healthDataRepository healthdata;
 	
+	@Autowired
+	private temperatureDataRepository temperaturedata;
+	
 	 @GetMapping("/greeting")
-	  public String greeting(@RequestParam(name="id") long patient_id, Model model) {
+	  public String greeting(@RequestParam(name="id") long patient_id, @RequestParam(name="bpm") long bpm_id, @RequestParam(name="temperature") long temp_id, Model model) {
 		 int counter = 1;
 		 LocalDateTime ldt = LocalDateTime.now();
 		 healthData result = new healthData();
-		 List<healthData> data = healthdata.findByPatientId((int)patient_id);
+		 List<healthData> data = healthdata.findByPatientId((int)bpm_id);
 		 for(healthData hd : data) {
 			 if(counter == 1) {
 				 ldt = hd.getDatetime();
@@ -38,12 +41,30 @@ public class GreetingController {
 				 }
 			 }	
 		 }
+		 
+		 
+		 LocalDateTime ldt2 = LocalDateTime.now();
+		 temperatureData result2 = new temperatureData();
+		 List<temperatureData> data2 = temperaturedata.findByPatientId((int)temp_id);
+		 for(temperatureData td : data2) {
+			 if(counter == 1) {
+				 ldt2 = td.getDatetime();
+				 result2 = td;
+			 }
+			 else {
+				 if(ldt.isBefore(td.getDatetime())) {
+					 ldt = td.getDatetime();
+					 result2 = td;
+				 }
+			 }	
+		 }
+		 
 		 Patient p = patientRepository.findById(patient_id).orElseThrow();
 		 
 		 model.addAttribute("id", patient_id);
 		 model.addAttribute("name", p.getFirstName() + " " + p.getLastName());
 		 model.addAttribute("age", p.getAge());
-		 model.addAttribute("temperature", result.getTemperature());
+		 model.addAttribute("temperature", result2.getTemperature());
 		 model.addAttribute("bpm", result.getHeartBeat());
 		 model.addAttribute("latitude", result.getLatitude());
 		 model.addAttribute("longitude", result.getLongitude());
