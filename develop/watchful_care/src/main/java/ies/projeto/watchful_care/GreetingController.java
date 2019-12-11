@@ -24,45 +24,55 @@ public class GreetingController {
 	@Autowired
 	private healthDataRepository healthdata;
 	
-	 @GetMapping("/PatientInfo")
-	  public String greeting(@RequestParam(name="id") long patient_id, Model model) {
-		//try{
-			int counter = 1;
-			LocalDateTime ldt = LocalDateTime.now();
-			healthData result = new healthData();
-			List<healthData> data = healthdata.findByPatientId((int)patient_id);
-			for(healthData hd : data) {
-				if(counter == 1) {
-					ldt = hd.getDatetime();
-					result = hd;
-				}
-				else {
-					if(ldt.isBefore(hd.getDatetime())) {
-						ldt = hd.getDatetime();
-						result = hd;
-					}
-				}	
-			}
-			Patient p = patientRepository.findById(patient_id).orElseThrow();
-			
-			model.addAttribute("id", patient_id);
-			model.addAttribute("name", p.getFirstName() + " " + p.getLastName());
-			model.addAttribute("age", p.getAge());
-			model.addAttribute("temperature", result.getTemperature());
-			model.addAttribute("bpm", result.getHeartBeat());
-			model.addAttribute("latitude", result.getLatitude());
-			model.addAttribute("longitude", result.getLongitude());
-			return "greeting";
-		//}
-		/** 
-		catch (MyResourceNotFoundException exc) {
-			throw new ResponseStatusException(
-			  HttpStatus.NOT_FOUND, "Patient Not Found", exc);
-	   }
-	    **/
+	@Autowired
+	private temperatureDataRepository temperaturedata;
+	
+	@GetMapping("/PatientInfo")
+	 public String Patient(@RequestParam(name="id") long patient_id, Model model) {
+		 int counter = 1;
+		 LocalDateTime ldt = LocalDateTime.now();
+		 healthData result = new healthData();
+		 List<healthData> data = healthdata.findByPatientId((int)patient_id);
+		 for(healthData hd : data) {
+			 if(counter == 1) {
+				 ldt = hd.getDatetime();
+				 result = hd;
+			 }
+			 else {
+				 if(ldt.isBefore(hd.getDatetime())) {
+					 ldt = hd.getDatetime();
+					 result = hd;
+				 }
+			 }	
+		 }
+		 
+		 /*
+		 LocalDateTime ldt2 = LocalDateTime.now();
+		 temperatureData result2 = new temperatureData();
+		 List<temperatureData> data2 = temperaturedata.findByPatientId((int)temp_id);
+		 for(temperatureData td : data2) {
+			 if(counter == 1) {
+				 ldt2 = td.getDatetime();
+				 result2 = td;
+			 }
+			 else {
+				 if(ldt.isBefore(td.getDatetime())) {
+					 ldt = td.getDatetime();
+					 result2 = td;
+				 }
+			 }	
+		 }
+		 */
+		 Patient p = patientRepository.findById(patient_id).orElseThrow();
+		 
+		 model.addAttribute("id", patient_id);
+		 model.addAttribute("name", p.getFirstName() + " " + p.getLastName());
+		 model.addAttribute("age", p.getAge());
+
+		 return "Patient";
 	  }
-	 
-	 @GetMapping("/listAllPatients")
+
+	@GetMapping("/listAllPatients")
 	  public String listPatients( Model model) {
 		 
 		 
@@ -70,14 +80,6 @@ public class GreetingController {
 		 
 		 return "listPatients";
 	  }
-	 /**
-	 @GetMapping("/addPatient")
-	 public String greeting(@RequestParam(name="id") long patient_id, Model model) {
-		 
-	 }
-
-	 
-	 **/
 
 	@GetMapping("/addPatient")
 	public String AddPatient (Model model){
@@ -96,7 +98,7 @@ public class GreetingController {
 
 		model.addAttribute("form", pac_store);		
 
-		return "save_pacient";
+		return "save_patient";
 	}	
 
 
@@ -144,5 +146,5 @@ public class GreetingController {
 
 
 	 
-	 
+
 }
