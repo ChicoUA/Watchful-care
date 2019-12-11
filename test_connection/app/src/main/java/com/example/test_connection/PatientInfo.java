@@ -1,5 +1,6 @@
 package com.example.test_connection;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,14 +28,28 @@ import java.util.logging.Logger;
 
 public class PatientInfo  extends AppCompatActivity {
     private static final Logger LOGGER = Logger.getLogger("LOGGER");
+    private int bpm_id;
+    private int temp_id;
+    private int id;
+    JSONObject data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patients);
+        setContentView(R.layout.activity_patient_info);
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
 
+        if (extras != null) {
+            id = (Integer) extras.get("ID");
+            bpm_id = (Integer) extras.get("BPM_ID");
+            temp_id = (Integer) extras.get("TEMP_ID");
+        }
 
-        new JsonTask().execute("http://192.168.160.216:9090/add/data");
+        String url = "http://192.168.160.216:9090/add/lattestdata?id="+id+"&bpm="+bpm_id+"&temperature="+temp_id;
+        System.out.println(url);
+
+        new JsonTask().execute(url);
 
 
     }
@@ -97,58 +112,34 @@ public class PatientInfo  extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             try {
-                patients = parseJson(result);
-                LinearLayout mainLayout = findViewById(R.id.parent_linear_layout);
-                LayoutInflater inflater = getLayoutInflater();
-                try{
+                data = parseJson(result);
 
-                    LOGGER.info("Logger Name: "+LOGGER.getName());
+                TextView name = findViewById(R.id.PatientName);
+                TextView age = findViewById(R.id.PatientAge);
+                TextView bpm = findViewById(R.id.PatientBPM);
+                TextView temperature = findViewById(R.id.PatientTemperature);
+                TextView latitude = findViewById(R.id.PatientLatitude);
+                TextView longitude = findViewById(R.id.PatientLongitude);
 
-                    for(Patient p : patients){
-                        LOGGER.warning("Patient: "+p);
-                        View myLayout = inflater.inflate(R.layout.list_elements, mainLayout, false);
-
-                        RelativeLayout product_item = myLayout.findViewById(R.id.product_item);
-                        ImageView product_image = myLayout.findViewById(R.id.product_image);
-                        TextView product_name = myLayout.findViewById(R.id.product_name);
-                        TextView product_location_time = myLayout.findViewById(R.id.product_location_time);
-
-                        product_image.setImageResource( getResources().getIdentifier("person", "drawable",getPackageName()));
-                        product_name.setText(p.getFirstName() + " " + p.getLastName());
-                        product_location_time.setText("Idade: "+p.getAge());
-                        product_item.setId(p.getBpm_id());
+                name.setText(data.getString("firstName")+" "+data.getString("lastName"));
+                age.setText("Idade: "+data.getInt("age"));
+                bpm.setText("BPM: "+data.getDouble("heartBeat"));
+                temperature.setText("Temperatura: "+data.getDouble("temperature"));
+                latitude.setText(("Latitude: "+data.getDouble("latitude")));
+                longitude.setText("Longitude: "+data.getDouble("longitude"));
 
 
-                        mainLayout.addView(myLayout);
-                    }
-                }
-                catch(Exception e){
-                    e.printStackTrace();
-                }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
 
-        public ArrayList<Patient> parseJson(String json) throws JSONException {
+        public JSONObject parseJson(String json) throws JSONException {
             System.out.println(json);
 
-            JSONArray jArr = new JSONArray(json);
-            ArrayList<Patient> patients = new ArrayList<>();
+            JSONObject jObj = new JSONObject(json);
 
-            for (int count = 0; count < jArr.length(); count++) {
-                JSONObject obj = jArr.getJSONObject(count);
-                int bpm_id= obj.getInt("bpm_id");
-                int temp_id= obj.getInt("temp_id");
-                int age= obj.getInt("age");
-                String firstName= obj.getString("firstName");
-                String lastName = obj.getString("lastName");
-                Patient p = new Patient(firstName, lastName, age, bpm_id, temp_id);
-                System.out.println(p);
-                patients.add(p);
-            }
-            System.out.println(patients);
-            return patients;
+            return jObj;
         }
 
     }

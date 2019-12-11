@@ -1043,6 +1043,13 @@ id ALT
 id CTRL
 id FUNCTION
 id META
+id PatientAge
+id PatientBPM
+id PatientLatitude
+id PatientLongitude
+id PatientName
+id PatientTemperature
+id ProductImage
 id SHIFT
 id SYM
 id action_bar
@@ -1181,6 +1188,7 @@ id scrollIndicatorUp
 id scrollView
 id scrollView2
 id scrollable
+id searchBar
 id search_badge
 id search_bar
 id search_button
@@ -1299,7 +1307,9 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_patient_info
 layout activity_patients
+layout activity_search_page
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1327,6 +1337,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu search_bar
 mipmap ic_launcher
 mipmap ic_launcher_round
 mipmap login

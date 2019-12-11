@@ -6,8 +6,10 @@ public class Patient {
     private int age;
     private int bpm_id;
     private int temp_id;
+    private int id;
 
-    public Patient(String firstName, String lastName, int age, int bpm_id, int temp_id){
+    public Patient(String firstName, String lastName, int age, int bpm_id, int temp_id, int id){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -35,6 +37,10 @@ public class Patient {
         return temp_id;
     }
 
+    public int getId(){
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Patient{" +
@@ -43,6 +49,7 @@ public class Patient {
                 ", age=" + age +
                 ", bpm_id=" + bpm_id +
                 ", temp_id=" + temp_id +
+                ", id=" + id +
                 '}';
     }
 }

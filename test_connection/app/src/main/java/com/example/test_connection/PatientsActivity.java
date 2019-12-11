@@ -5,13 +5,18 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +52,42 @@ public class PatientsActivity extends AppCompatActivity {
 
 
     }
+    /*
+    //Used for SearchBar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_bar, menu);
+        MenuItem item = menu.findItem(R.id.searchBar);
+        SearchView searchView = (SearchView) item.getActionView();
+
+        //luissss, para a barra ficar sempre expandida
+        searchView.setIconifiedByDefault(false);
+        searchView.setBackgroundColor(0xFFffd595);  //os 2 1os FF sao a transparencia
+        searchView.setQueryHint("Pesquisar...");
+
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+        searchView.setMaxWidth((int) (width / 1.7));
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                getInput(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+    */
 
     private class JsonTask extends AsyncTask<String, String, String> {
 
@@ -125,7 +166,11 @@ public class PatientsActivity extends AppCompatActivity {
                         product_image.setImageResource( getResources().getIdentifier("person", "drawable",getPackageName()));
                         product_name.setText(p.getFirstName() + " " + p.getLastName());
                         product_location_time.setText("Idade: "+p.getAge());
-                        product_item.setId(p.getBpm_id());
+                        product_item.setId(p.getId());
+                        ArrayList<Integer> ids = new ArrayList<>();
+                        ids.add(p.getBpm_id());
+                        ids.add(p.getTemp_id());
+                        product_item.setTag(ids);
 
 
                         mainLayout.addView(myLayout);
@@ -147,12 +192,13 @@ public class PatientsActivity extends AppCompatActivity {
 
             for (int count = 0; count < jArr.length(); count++) {
                 JSONObject obj = jArr.getJSONObject(count);
+                int id = obj.getInt("id");
                 int bpm_id= obj.getInt("bpm_id");
                 int temp_id= obj.getInt("temp_id");
                 int age= obj.getInt("age");
                 String firstName= obj.getString("firstName");
                 String lastName = obj.getString("lastName");
-                Patient p = new Patient(firstName, lastName, age, bpm_id, temp_id);
+                Patient p = new Patient(firstName, lastName, age, bpm_id, temp_id, id);
                 System.out.println(p);
                 patients.add(p);
             }
@@ -168,8 +214,20 @@ public class PatientsActivity extends AppCompatActivity {
                 Toast.LENGTH_LONG).show();
         Intent myIntent = new Intent(this, PatientInfo.class);
         int id = view.getId();
-        myIntent.putExtra("PRODUCT_ID", id);
+        myIntent.putExtra("ID", id);
+        ArrayList<Integer> ids = (ArrayList<Integer>) view.getTag();
+        myIntent.putExtra("TEMP_ID", ids.get(1));
+        myIntent.putExtra("BPM_ID", ids.get(0));
 
         startActivity(myIntent);
     }
+    /*
+    //Used to go the activity with the results from the search
+    public void getInput(String searchText)
+    {
+        Intent in = new Intent(this, searchPage.class);
+        in.putExtra("TEXT", searchText);
+        startActivity(in);
+    }
+    */
 }
