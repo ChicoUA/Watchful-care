@@ -49,5 +49,24 @@ public class Patient {
 		return age;
 	}
 
+	public int getBpm_id() {
+		return bpm_id;
+	}
+
+	public int getTemp_id() {
+		return temp_id;
+	}
+
+
+	public long getId() {
+		return id;
+	}
+
+	public LocalDateTime getDatetime() {
+		return datetime;
+	}
+	
+	
+
 
 }
