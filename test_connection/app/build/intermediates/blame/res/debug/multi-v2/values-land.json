@@ -4,17 +4,7 @@
             "outputFile": "C:\\Users\\chico\\Desktop\\Watchful-care\\test_connection\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\chico\\.gradle\\caches\\transforms-2\\files-2.1\\bb39ec11b6b89cb1cd7b43d953e051c7\\res\\values-land\\values-land.xml",
-                    "from": {
-                        "startLines": "2,3,4",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,125,196",
-                        "endColumns": "69,70,67",
-                        "endOffsets": "120,191,259"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\chico\\.gradle\\caches\\transforms-2\\files-2.1\\acc057ab4fc094b8746822e2fd35b03a\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\chico\\.gradle\\caches\\transforms-2\\files-2.1\\8689b0521f27ad05b5bd8f497a3c232d\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "8",
                         "endColumns": "10",
                         "endOffsets": "431"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\chico\\.gradle\\caches\\transforms-2\\files-2.1\\4a9a80a9cc991932fb8793f6024befd5\\res\\values-land\\values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
                     }
                 }
             ]
