@@ -32,6 +32,10 @@
             android:name="com.example.test_connection.PatientsActivity"
             android:label="PATIENTS"
             android:parentActivityName="com.example.test_connection.MainActivity" />
+        <activity
+            android:name="com.example.test_connection.PatientInfo"
+            android:label="PATIENT_INFO"
+            android:parentActivityName="com.example.test_connection.PatientsActivity" />
     </application>
 
 </manifest>
