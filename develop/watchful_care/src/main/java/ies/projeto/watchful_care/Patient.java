@@ -3,6 +3,8 @@ package ies.projeto.watchful_care;
 import lombok.*;
 
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,18 +18,28 @@ public class Patient {
     private String firstName;
     private String lastName;
     private int age;
+    private int bpm_id;
+    private int temp_id;
+    private LocalDateTime datetime;
 
 
-    public Patient(String firstName, String lastName, int age, healthData data){
+    public Patient(String firstName, String lastName, int age, int bpm_id, int temp_id){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.bpm_id = bpm_id;
+        this.temp_id = temp_id;
+        this.datetime = LocalDateTime.now();
 
     }
     
     public Patient() {
     	
     }
+
+	public long getPatientID() {
+		return id;
+	}
 
 	public String getFirstName() {
 		return firstName;

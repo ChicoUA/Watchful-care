@@ -20,8 +20,11 @@ public class GreetingController {
 	@Autowired
 	private healthDataRepository healthdata;
 	
-	 @GetMapping("/greeting")
-	  public String greeting(@RequestParam(name="id") long patient_id, Model model) {
+	@Autowired
+	private temperatureDataRepository temperaturedata;
+	
+	@GetMapping("/Patient")
+	 public String Patient(@RequestParam(name="id") long patient_id, Model model) {
 		 int counter = 1;
 		 LocalDateTime ldt = LocalDateTime.now();
 		 healthData result = new healthData();
@@ -38,15 +41,40 @@ public class GreetingController {
 				 }
 			 }	
 		 }
+		 
+		 /*
+		 LocalDateTime ldt2 = LocalDateTime.now();
+		 temperatureData result2 = new temperatureData();
+		 List<temperatureData> data2 = temperaturedata.findByPatientId((int)temp_id);
+		 for(temperatureData td : data2) {
+			 if(counter == 1) {
+				 ldt2 = td.getDatetime();
+				 result2 = td;
+			 }
+			 else {
+				 if(ldt.isBefore(td.getDatetime())) {
+					 ldt = td.getDatetime();
+					 result2 = td;
+				 }
+			 }	
+		 }
+		 */
 		 Patient p = patientRepository.findById(patient_id).orElseThrow();
 		 
 		 model.addAttribute("id", patient_id);
 		 model.addAttribute("name", p.getFirstName() + " " + p.getLastName());
 		 model.addAttribute("age", p.getAge());
-		 model.addAttribute("temperature", result.getTemperature());
-		 model.addAttribute("bpm", result.getHeartBeat());
-		 model.addAttribute("latitude", result.getLatitude());
-		 model.addAttribute("longitude", result.getLongitude());
-		 return "greeting";
+
+		 return "Patient";
 	  }
+
+	@GetMapping("/listAllPatients")
+	  public String listPatients( Model model) {
+		 
+		 
+		 model.addAttribute("patients", patientRepository.findAll());
+		 
+		 return "listPatient";
+	  }
+
 }
