@@ -68,6 +68,8 @@ public class GreetingController {
 		 model.addAttribute("id", patient_id);
 		 model.addAttribute("name", p.getFirstName() + " " + p.getLastName());
 		 model.addAttribute("age", p.getAge());
+		 model.addAttribute("bpm_id", p.getBpm_id());
+		 model.addAttribute("temp_id", p.getTemp_id());
 
 		 return "Patient";
 	  }

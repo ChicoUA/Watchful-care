@@ -30,16 +30,16 @@ public class Patient {
         this.bpm_id = bpm_id;
         this.temp_id = temp_id;
         this.datetime = LocalDateTime.now();
-            
+
     }
     
     public Patient() {
     	
     }
-    
-    public long getPatientID() {
-    	return id;
-    }
+
+	public long getPatientID() {
+		return id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -52,9 +52,11 @@ public class Patient {
 	public int getAge() {
 		return age;
 	}
-	
-	public int getBPM() {
+	public int getBpm_id() {
 		return bpm_id;
+	}
+	public int getTemp_id() {
+		return temp_id;
 	}
 
 

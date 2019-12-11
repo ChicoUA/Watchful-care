@@ -224,6 +224,9 @@ h2{
                             <th id="Id"> Id </th>
                             <th> First Name </th>
                             <th> Last Name </th>
+                            <th> Age </th>
+                            <th> BPM Device ID </th>
+                            <th> Temperature Device ID </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -234,12 +237,16 @@ h2{
                                 <td class="Id"><span th:text="${Patient.id}"> Id </span></td>
                                 <td><span th:text="${Patient.firstName}"> First Name </span></td>
                                 <td><span th:text="${Patient.lastName}"> Last Name </span></td>
+                                <td><span th:text="${Patient.age}"> Age </span></td>
+                                <td><span th:text="${Patient.bpm_id}"> BPM Device ID  </span></td>
+                                <td><span th:text="${Patient.temp_id}"> Temperature Device ID</span></td>
                                 
                             </tr>
                     <tbody>
                 </table>
             </div>
 
+  
 <div class="container">
         <hr/>
         
