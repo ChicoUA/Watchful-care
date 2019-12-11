@@ -23,16 +23,12 @@ public class RController {
 	
 	@Autowired
 	private healthDataRepository healthdata;
-	
-	@Autowired
-	private temperatureDataRepository temperaturedata;
 
 	@GetMapping("/patients")
 	public ResponseEntity<List<Patient>> getPatients(){
     	List<Patient> employee = patientRepository.findAll();
     	return ResponseEntity.ok().body(employee);
-    	
-	}
+    }
 	
 	@GetMapping("/data")
 	public ResponseEntity<List<healthData>> getdata(@RequestParam(name = "id") int patient_id) {
@@ -67,14 +63,10 @@ public class RController {
 	    return patientRepository.save(patient);
 	}
 	
-	@PostMapping("/bpm_data")
+	@PostMapping("/data")
 	public healthData createData(@Valid @RequestBody healthData hd) {
 	    return healthdata.save(hd);
 	}
 	
-	@PostMapping("/temp_data")
-	public temperatureData createTempData(@Valid @RequestBody temperatureData td) {
-		return temperaturedata.save(td);
-	}
 
 }
