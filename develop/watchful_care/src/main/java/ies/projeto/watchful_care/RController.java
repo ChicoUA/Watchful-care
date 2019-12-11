@@ -40,24 +40,47 @@ public class RController {
 	}
 	
 	@GetMapping("/lattestdata")
-	public ResponseEntity<healthData> getlattestData(@RequestParam(name = "id") int patient_id) {
+	public ResponseEntity<supportData> getlattestData(@RequestParam(name="id") long patient_id, @RequestParam(name="bpm") long bpm_id, @RequestParam(name="temperature") long temp_id) {
 		int counter = 1;
-		LocalDateTime ldt = LocalDateTime.now();
-		healthData result = new healthData();
-    	List<healthData> data = healthdata.findByPatientId(patient_id);
-    	for(healthData hd : data) {
-    		if(counter == 1) {
-    			ldt = hd.getDatetime();
-    			result = hd;
-    		}
-    		else {
-    			if(ldt.isBefore(hd.getDatetime())) {
-    				ldt = hd.getDatetime();
-        			result = hd;
-    			}
-    		}	
-    	}
-    	return ResponseEntity.ok().body(result);
+		 LocalDateTime ldt = LocalDateTime.now();
+		 healthData result = new healthData();
+		 List<healthData> data = healthdata.findByPatientId((int)bpm_id);
+		 for(healthData hd : data) {
+			 if(counter == 1) {
+				 ldt = hd.getDatetime();
+				 result = hd;
+			 }
+			 else {
+				 if(ldt.isBefore(hd.getDatetime())) {
+					 ldt = hd.getDatetime();
+					 result = hd;
+				 }
+			 }	
+		 }
+		 
+		 
+		 LocalDateTime ldt2 = LocalDateTime.now();
+		 temperatureData result2 = new temperatureData();
+		 List<temperatureData> data2 = temperaturedata.findByPatientId((int)temp_id);
+		 for(temperatureData td : data2) {
+			 if(counter == 1) {
+				 ldt2 = td.getDatetime();
+				 result2 = td;
+			 }
+			 else {
+				 if(ldt.isBefore(td.getDatetime())) {
+					 ldt = td.getDatetime();
+					 result2 = td;
+				 }
+			 }	
+		 }
+		 
+		 Patient p = patientRepository.findById(patient_id).orElseThrow();
+		 
+		supportData supportdata = new supportData(result.getHeartBeat(), result.getLongitude(), result.getLatitude(),
+				result2.getTemperature(), p.getFirstName(), p.getLastName(), p.getAge());
+		
+    	return ResponseEntity.ok().body(supportdata);
 	}
 	
 	
