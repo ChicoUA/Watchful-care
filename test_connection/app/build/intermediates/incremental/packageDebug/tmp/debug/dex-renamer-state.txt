@@ -1,7 +1,7 @@
-#Tue Dec 10 17:32:45 GMT 2019
-base.0=C\:\\Users\\chico\\Desktop\\test_connection\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
+#Wed Dec 11 15:12:50 GMT 2019
+base.0=C\:\\Users\\chico\\Desktop\\Watchful-care\\test_connection\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=C\:\\Users\\chico\\Desktop\\test_connection\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
+base.1=C\:\\Users\\chico\\Desktop\\Watchful-care\\test_connection\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out

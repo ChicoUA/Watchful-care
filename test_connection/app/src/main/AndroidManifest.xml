@@ -18,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PatientsActivity"
+            android:label="PATIENTS"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".PatientInfo"
+            android:label="PATIENT_INFO"
+            android:parentActivityName=".PatientsActivity"/>
+
     </application>
 
 </manifest>
