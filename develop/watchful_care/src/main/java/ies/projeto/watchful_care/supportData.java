@@ -1,6 +1,15 @@
 package ies.projeto.watchful_care;
 
+import lombok.*;
+import javax.persistence.*;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Data
+@Entity
 public class supportData {
+	private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) long id2;
 	private double heartBeat;
     private double longitude;
     private double latitude;
