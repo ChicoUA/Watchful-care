@@ -22,7 +22,7 @@ public class gateway
     	factory.setUsername("admin");
     	factory.setPassword("1234");
     	factory.setVirtualHost("/");
-    	factory.setHost("192.168.80.129");
+    	factory.setHost("192.168.160.216");
     	factory.setPort(5672);
     	Connection conn = factory.newConnection();
     	Channel channel = conn.createChannel();
