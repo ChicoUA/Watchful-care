@@ -33,6 +33,19 @@ public class generator implements Serializable{
 			this.beat = 10000;
 		}
 	}
+	
+	public generator(String temp, int identifier, String alert) {
+		this.identifier = identifier;
+		this.dt = new data(alert);
+		if (temp.equals("bpm")) {
+			this.temperature = false;
+			this.beat = 5000;
+		}
+		else {
+			this.temperature = true;
+			this.beat = 10000;
+		}
+	}
 
 	public int getIdentifier() {
 		return identifier;

@@ -16,7 +16,15 @@ public class test {
 		ObjectOutputStream out = new ObjectOutputStream(outputStream);
 		
 		System.out.println(args[1]);
-		generator gen1 = new generator((String)args[0], Integer.parseInt(args[1]));
+		if(args[2].equals("temperature") || args[2].equals("bpm")){
+			generator gen1 = new generator((String)args[0], Integer.parseInt(args[1]), args[2]);
+			System.out.println(gen1);
+			out.writeObject(gen1);
+			out.reset();
+
+		}
+		else {
+			generator gen1 = new generator((String)args[0], Integer.parseInt(args[1]));
 		
 		/*
 		generator gen2 = new generator();
@@ -24,17 +32,18 @@ public class test {
 		*/
 		
 		
-		while(true) {
-			System.out.println(gen1);
+			while(true) {
+				System.out.println(gen1);
 
 			
-			out.writeObject(gen1);
-			out.reset();
+				out.writeObject(gen1);
+				out.reset();
 			
-			gen1.generateNewData();
+				gen1.generateNewData();
 
 			
-			Thread.sleep(gen1.getBeat());
+				Thread.sleep(gen1.getBeat());
+			}
 		}
 	}
 

@@ -20,6 +20,24 @@ public class data implements Serializable{
 		this.latitude = 75 + (77 - 75) * r.nextDouble();
 		this.longitude = -113 + (-115 +113) * r.nextDouble();
 	}
+	
+	protected data(String alert) {
+		if(alert.equals("bpm")) {
+			this.bpm = 200;
+		}
+		else {
+			this.bpm = r.nextInt(53 + 1) + 75; // [75 - 128]
+		}
+		
+		if(alert.equals("temperature")) {
+			this.temp = 40;
+		}
+		else {
+			this.temp = 36 + (38 - 36) * r.nextDouble();
+		}
+		this.latitude = 75 + (77 - 75) * r.nextDouble();
+		this.longitude = -113 + (-115 +113) * r.nextDouble();
+	}
 
 	public double getTemp() {
 		return temp;
