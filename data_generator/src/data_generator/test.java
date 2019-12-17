@@ -38,8 +38,14 @@ public class test {
 			
 				out.writeObject(gen1);
 				out.reset();
+				double battery = gen1.getDt().getBattery() - 10.0;
+				
+				if(battery <= 0) {
+					System.out.println("Battery empty, shutting down...");
+					break;
+				}
 			
-				gen1.generateNewData();
+				gen1.generateNewData(battery);
 
 			
 				Thread.sleep(gen1.getBeat());

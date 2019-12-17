@@ -48,19 +48,21 @@ public class workerThread implements Runnable{
 				listOfgenerators = (generator) objectInputStream.readObject();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				break;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+
+				break;
 			}
 			System.out.println(listOfgenerators);
 			byte[] data = listOfgenerators.toString().getBytes();
 		    
 		    try {
-				channel.basicPublish("", "message_queue.anonymous.wIIQT6HvTAKxkcqViURgAg", null, data);
+				channel.basicPublish("", "message_queue.anonymous.lp-JgHYhReWIPfXyVFw-pg", null, data);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				break;
 			}
 		    System.out.println("Message sent to queue");
 

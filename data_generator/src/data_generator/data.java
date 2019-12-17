@@ -13,12 +13,14 @@ public class data implements Serializable{
 	private double latitude;
 	private double longitude;
 	private static Random r = new Random();
+	private double battery;
 	
-	protected data() {
+	protected data(double battery) {
 		this.temp = 36 + (38 - 36) * r.nextDouble();
 		this.bpm = r.nextInt(53 + 1) + 75; // [75 - 128]
 		this.latitude = 75 + (77 - 75) * r.nextDouble();
 		this.longitude = -113 + (-115 +113) * r.nextDouble();
+		this.battery = battery;
 	}
 	
 	protected data(String alert) {
@@ -37,6 +39,7 @@ public class data implements Serializable{
 		}
 		this.latitude = 75 + (77 - 75) * r.nextDouble();
 		this.longitude = -113 + (-115 +113) * r.nextDouble();
+		this.battery = 100.0;
 	}
 
 	public double getTemp() {
@@ -75,6 +78,16 @@ public class data implements Serializable{
 	public String toString() {
 		return "/" + temp + "/" + bpm + "/" + latitude + "/" + longitude;
 	}
+
+	public double getBattery() {
+		return battery;
+	}
+
+	public void setBattery(double battery) {
+		this.battery = battery;
+	}
+	
+	
 
 	
 	
