@@ -26,6 +26,12 @@ public class RController {
 	
 	@Autowired
 	private temperatureDataRepository temperaturedata;
+	
+	@Autowired
+	private PushNotificationController control;
+	
+	@Autowired
+	private emergencyRepository emergencyRep;
 
 	@GetMapping("/patients")
 	public ResponseEntity<List<Patient>> getPatients(){
@@ -97,6 +103,15 @@ public class RController {
 	@PostMapping("/temp_data")
 	public temperatureData createTempData(@Valid @RequestBody temperatureData td) {
 		return temperaturedata.save(td);
+	}
+	
+	@PostMapping("/emergency")
+	public emergency sendEmergency(@Valid @RequestBody emergency e) {
+		System.out.println("Patient Requests Assistance");
+		String body = "Paciente: "+e.getPatientId()+" pediu assistência!";
+		PushNotificationRequest alertMessage = new PushNotificationRequest("Alerta!!!", body, "common");
+		control.sendNotification(alertMessage);
+		return emergencyRep.save(e);
 	}
 
 }
