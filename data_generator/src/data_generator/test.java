@@ -13,14 +13,18 @@ public class test {
 		System.out.println("Connected!");
 		
 		OutputStream outputStream = socket.getOutputStream();
-		ObjectOutputStream out = new ObjectOutputStream(outputStream);
+        DataOutputStream dataOutputStream = new DataOutputStream(outputStream);
+		//ObjectOutputStream out = new ObjectOutputStream(outputStream);
 		
 		System.out.println(args[1]);
 		if(args[2].equals("temperature") || args[2].equals("bpm")){
 			generator gen1 = new generator((String)args[0], Integer.parseInt(args[1]), args[2]);
 			System.out.println(gen1);
-			out.writeObject(gen1);
-			out.reset();
+			dataOutputStream.writeUTF(gen1.toString());
+	        dataOutputStream.flush(); // send the message
+	        
+			//out.writeObject(gen1);
+			//out.reset();
 
 		}
 		else {
@@ -34,10 +38,11 @@ public class test {
 		
 			while(true) {
 				System.out.println(gen1);
-
+				dataOutputStream.writeUTF(gen1.toString());
+		        dataOutputStream.flush(); // send the message
 			
-				out.writeObject(gen1);
-				out.reset();
+				//out.writeObject(gen1);
+				//out.reset();
 				double battery = gen1.getDt().getBattery() - 10.0;
 				
 				if(battery <= 0) {

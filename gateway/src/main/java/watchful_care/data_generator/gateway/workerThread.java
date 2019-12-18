@@ -1,5 +1,6 @@
 package watchful_care.data_generator.gateway;
 
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -32,33 +33,27 @@ public class workerThread implements Runnable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ObjectInputStream objectInputStream = null;
-		try {
-			objectInputStream = new ObjectInputStream(inputStream);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//ObjectInputStream objectInputStream = null;
+		DataInputStream dataInputStream = null;
+		dataInputStream = new DataInputStream(inputStream);
 		
 		
 		while(true) {
 			
-			generator listOfgenerators = null;
+			String listOfgenerators = null;
 			try {
-				listOfgenerators = (generator) objectInputStream.readObject();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				break;
+				//listOfgenerators = (generator) objectInputStream.readObject();
+				listOfgenerators = dataInputStream.readUTF();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 
 				break;
 			}
 			System.out.println(listOfgenerators);
-			byte[] data = listOfgenerators.toString().getBytes();
+			byte[] data = listOfgenerators.getBytes();
 		    
 		    try {
-				channel.basicPublish("", "message_queue.anonymous.lp-JgHYhReWIPfXyVFw-pg", null, data);
+				channel.basicPublish("", "message_queue.anonymous.cfWjv6v_S-qD3aimeQKglA", null, data);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
