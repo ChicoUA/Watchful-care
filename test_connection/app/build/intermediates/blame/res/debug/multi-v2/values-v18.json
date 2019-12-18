@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\chico\\Desktop\\Watchful-care\\test_connection\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
+            "outputFile": "C:\\Users\\chico\\Desktop\\test_connection\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v18\\values-v18.xml",
             "map": [
                 {
                     "source": "C:\\Users\\chico\\.gradle\\caches\\transforms-2\\files-2.1\\4a9a80a9cc991932fb8793f6024befd5\\res\\values-v18\\values-v18.xml",

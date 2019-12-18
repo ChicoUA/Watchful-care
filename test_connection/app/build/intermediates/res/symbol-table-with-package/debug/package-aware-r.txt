@@ -1016,6 +1016,8 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable beat
+drawable bell
 drawable button_home
 drawable buttonshape
 drawable common_full_open_on_phone
@@ -1045,11 +1047,16 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable healt
+drawable health
+drawable heart
+drawable heart_health
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable lat
 drawable list_button
 drawable loginbuttonshape
 drawable mtrl_snackbar_background
@@ -1067,6 +1074,8 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable old
+drawable old_people
 drawable person
 drawable procurar_e_dar
 drawable product
@@ -1074,6 +1083,7 @@ drawable round_button
 drawable rounded_corner
 drawable rounded_corner1
 drawable signupbuttonshape
+drawable temp
 drawable text_pedir_boleia
 drawable textviewshape
 drawable tooltip_frame_dark
@@ -1124,6 +1134,7 @@ id beginning
 id blocking
 id bottom
 id btnLogin
+id button2
 id buttonPanel
 id cancel_action
 id center
@@ -1177,8 +1188,10 @@ id homeAsUp
 id icon
 id icon_group
 id icon_only
+id idade
 id ifRoom
 id image
+id imageView4
 id info
 id invisible
 id italic
@@ -1200,6 +1213,7 @@ id mini
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id name
 id navigation_header_container
 id never
 id none
@@ -1208,6 +1222,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id outline
+id paciente
 id packed
 id parallax
 id parent
@@ -1217,9 +1232,6 @@ id parent_matrix
 id percent
 id pin
 id product_image
-id product_item
-id product_location_time
-id product_name
 id progress_circular
 id progress_horizontal
 id radio
@@ -1283,6 +1295,8 @@ id textStart
 id textView
 id textView2
 id textView3
+id textView5
+id textView6
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -1357,10 +1371,10 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_help_patient
 layout activity_main
 layout activity_patient_info
 layout activity_patients
-layout activity_search_page
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

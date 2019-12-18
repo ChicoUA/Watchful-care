@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,14 +29,20 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnHit;
+
     TextView txtJson;
     ProgressDialog pd;
     private FirebaseAnalytics mFirebaseAnalytics;
     private NotificationCompat.Builder notification_builder;
+    EditText _emailText;
+    EditText _passwordText;
+    Button _loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -46,13 +53,59 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        _emailText = findViewById(R.id.editText);
+        _passwordText = findViewById(R.id.editText2);
+        _loginButton = findViewById(R.id.btnLogin);
+
+
     }
 
     public void goToPatients(View view){
-        Log.d("ENTRAR", "entrei em patients");
-        Toast.makeText(MainActivity.this, "This is my Toast message!",
+
+        if (!validate()) {
+            Toast.makeText(getBaseContext(), "Falha na autenticação", Toast.LENGTH_LONG).show();
+
+            _loginButton.setEnabled(true);
+
+        }
+        else {
+            Log.d("ENTRAR", "entrei em patients");
+            Toast.makeText(MainActivity.this, "Autenticado como médico/funcionário!",
+                    Toast.LENGTH_LONG).show();
+            Intent myIntent = new Intent(this, PatientsActivity.class);
+            startActivity(myIntent);
+        }
+    }
+
+
+    public boolean validate() {
+        boolean valid = true;
+
+        String email = _emailText.getText().toString();
+        String password = _passwordText.getText().toString();
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            _emailText.setError("Digite um e-mail válido!");
+            valid = false;
+        } else {
+            _emailText.setError(null);
+        }
+
+        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+            _passwordText.setError("Digite uma password válida!");
+            valid = false;
+        } else {
+            _passwordText.setError(null);
+        }
+
+        return valid;
+    }
+
+    public void goToHelpPatient(View view){
+
+        Toast.makeText(MainActivity.this, "Autenticado como paciente",
                 Toast.LENGTH_LONG).show();
-        Intent myIntent = new Intent(this, PatientsActivity.class);
+        Intent myIntent = new Intent(this, HelpPatient.class);
         startActivity(myIntent);
     }
 

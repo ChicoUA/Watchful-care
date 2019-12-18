@@ -158,12 +158,12 @@ public class PatientsActivity extends AppCompatActivity {
                         LOGGER.warning("Patient: "+p);
                         View myLayout = inflater.inflate(R.layout.list_elements, mainLayout, false);
 
-                        RelativeLayout product_item = myLayout.findViewById(R.id.product_item);
-                        ImageView product_image = myLayout.findViewById(R.id.product_image);
-                        TextView product_name = myLayout.findViewById(R.id.product_name);
-                        TextView product_location_time = myLayout.findViewById(R.id.product_location_time);
+                        RelativeLayout product_item = myLayout.findViewById(R.id.paciente);
 
-                        product_image.setImageResource( getResources().getIdentifier("person", "drawable",getPackageName()));
+                        TextView product_name = myLayout.findViewById(R.id.name);
+                        TextView product_location_time = myLayout.findViewById(R.id.idade);
+
+
                         product_name.setText(p.getFirstName() + " " + p.getLastName());
                         product_location_time.setText("Idade: "+p.getAge());
                         product_item.setId(p.getId());
@@ -210,8 +210,7 @@ public class PatientsActivity extends AppCompatActivity {
 
     public void goToPatientInfo(View view){
         Log.d("ENTRAR", "entrei na página do produto");
-        Toast.makeText(PatientsActivity.this, "This is my PATIENT message!",
-                Toast.LENGTH_LONG).show();
+
         Intent myIntent = new Intent(this, PatientInfo.class);
         int id = view.getId();
         myIntent.putExtra("ID", id);
