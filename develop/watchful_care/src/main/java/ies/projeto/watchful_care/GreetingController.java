@@ -182,7 +182,7 @@ public class GreetingController {
 			model.addAttribute("bpm_id", p.getBpm_id());
 			model.addAttribute("temp_id", p.getTemp_id());
 
-			return "Patient";
+			return "room";
 		}
 		else{
 			return "EmptyRoomError";
