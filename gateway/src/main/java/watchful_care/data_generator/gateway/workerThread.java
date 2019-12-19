@@ -53,7 +53,7 @@ public class workerThread implements Runnable{
 			byte[] data = listOfgenerators.getBytes();
 		    
 		    try {
-				channel.basicPublish("", "message_queue.anonymous.cfWjv6v_S-qD3aimeQKglA", null, data);
+				channel.basicPublish("", "message_queue.anonymous.E2Nzk01dSUq6IV-PFr6zFw", null, data);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

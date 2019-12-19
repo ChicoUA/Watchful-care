@@ -236,8 +236,11 @@ h2{
 							<th> LastName </th>
 							<th> Age </th>
 							<th> BPM Device Id </th>
-							<th> Temperature Device Id </th>
-						</tr>
+                            <th> Temperature Device Id </th>
+                            <th> Room Number </th>
+                        
+                        </tr>
+
 						</thead>
 						<tbody>
                         <tr th:each="Patient, itemStat : *{patients}">
@@ -246,7 +249,10 @@ h2{
                             <td><input th:field="*{patients[__${itemStat.index}__].age}" /></td>
                             <td><input th:field="*{patients[__${itemStat.index}__].bpm_id}" /></td>
                             <td><input th:field="*{patients[__${itemStat.index}__].temp_id}" /></td>
+                            <td><input th:field="*{patients[__${itemStat.index}__].RoomNumber}" /></td>
+
                         </tr>
+                    
                     </tbody>
 					</table>
 					<span class="pull-right">

@@ -90,25 +90,28 @@ body{
 				
         </nav>
         <div class="container">
-                <p id="id" style="font-size:1.5vw; color: white;" th:text="'Patient id: ' + ${id}" />
                 <p style="font-size:1.5vw; color: white;" th:text="'Name: ' + ${name}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'Age: ' + ${age}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'Last BPM: ' + ${bpm}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'Last Temperature: ' + ${temp}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'Latitude: ' + ${latitude}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'Longitude: ' + ${longitude}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'BPM Device id: ' + ${bpm_id}" />
-                <p style="font-size:1.5vw; color: white;" th:text="'Temperatura Device id: ' + ${temp_id}" />
-                <!--<p style="font-size:1.5vw; color: white;" th:text="'datetime: ' + ${datetime}" />-->
-                <a class="btn btn-info"> Delete Patient </a>
-			
-        
+				<p style="font-size:1.5vw; color: white;" th:text="'Date: ' + ${date}" />
+                <!--<p style="font-size:1.5vw; color: white;" th:text="'datetime: ' + ${datetime}" />--> 
 		</div>
 
     <br/>
+    <div class="container">
+                <p style="font-size:1.5vw; color: white;" th:text="'Min BPM: ' + ${bpm_min}" />
+                <p style="font-size:1.5vw; color: white;" th:text="'Max BPM: ' + ${bpm_max}" />
+                <p style="font-size:1.5vw; color: white;" th:text="'Mean BPM: ' + ${bpm_mean}" />
+                <!--<p style="font-size:1.5vw; color: white;" th:text="'datetime: ' + ${datetime}" />--> 
+	</div>
     <div id="chartContainer_Temperature" style="height: 300px; width: 100%;"></div> 
 
     <br/>
+    <div class="container">
+                <p style="font-size:1.5vw; color: white;" th:text="'Min Temperature: ' + ${temp_min}" />
+                <p style="font-size:1.5vw; color: white;" th:text="'Max Temperature: ' + ${temp_max}" />
+                <p style="font-size:1.5vw; color: white;" th:text="'Mean Temeperature: ' + ${temp_mean}" />
+                <!--<p style="font-size:1.5vw; color: white;" th:text="'datetime: ' + ${datetime}" />--> 
+	</div>
+    
     <div id="chartContainer_BPM" style="height: 300px; width: 100%;"></div> 
 
 
@@ -117,13 +120,6 @@ body{
 
 <script th:inline="javascript">
   
-  $("a").click(function(){
-      pId=document.getElementById("id").innerHTML.split(": ")[1];
-      window.location = "/DeletePatient?id="+pId;
-
-      
-      
-  });
     
     //see here
     var datetime_BPM = /*[[${tempos}]]*/ 'default';

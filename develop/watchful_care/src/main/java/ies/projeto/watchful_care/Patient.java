@@ -21,21 +21,28 @@ public class Patient {
     private int bpm_id;
     private int temp_id;
     private LocalDateTime datetime;
+	private int RoomNumber;
 
 
-    public Patient(String firstName, String lastName, int age, int bpm_id, int temp_id){
+   public Patient(String firstName, String lastName, int age, int bpm_id, int temp_id, int RoomNumber){
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.bpm_id = bpm_id;
         this.temp_id = temp_id;
-        this.datetime = LocalDateTime.now();
+		this.datetime = LocalDateTime.now();
+		this.RoomNumber = RoomNumber;
 
     }
+    
     
     public Patient() {
     	
     }
+
+	public long getPatientID() {
+		return id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -48,24 +55,20 @@ public class Patient {
 	public int getAge() {
 		return age;
 	}
-
 	public int getBpm_id() {
 		return bpm_id;
 	}
-
 	public int getTemp_id() {
 		return temp_id;
 	}
 
-
-	public long getId() {
-		return id;
+	public int getRoomNumber(){
+		return this.RoomNumber;
 	}
 
-	public LocalDateTime getDatetime() {
-		return datetime;
+	public void setRoomNumber(int RoomNumber){
+		this.RoomNumber = RoomNumber;
 	}
-	
 	
 
 

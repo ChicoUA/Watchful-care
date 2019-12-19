@@ -64,7 +64,7 @@
 				<img src=home4.jpg style="max-height: 700px; display: block; margin: 0 auto;">
 			</header>
 		<div class="container">
-				<p style="font-size:1.5vw;">Bastantes individuos quando chegam a uma idade avançada necessitam de algus cuidados médicos e monotorização no seu dia a dia. 
+				<p style="font-size:1.5vw;">Bastantes individuos quando chegam a uma idade avançada necessitam de alguns cuidados médicos e monotorização no seu dia a dia. 
 						Assim, surge o Wacthful-care.</p>
 	
 			</div>
@@ -104,6 +104,49 @@
 					  </div>
 		</div>
 
+		<div class="container" style="text-align: center;">
+			<table style="background: url(planta.png); 
+						width: 603px;
+						height: 388px;
+						background-size: cover;
+						text-align: center;">
+
+			<tr style="height: 120px;" >
+				<td style="width:103px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=1}">  <span class="Id">1 </span> </a></td>
+				<td style="width:95px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=2}"> <span class="Id">2</span> </a></td>
+				<td style="width:110px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=3}">  <span class="Id">3 </span> </a></td>
+				<td style="width:90px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=4}">  <span class="Id">4</span></a></td>
+				<td style="width:107px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=5}">  <span class="Id">5</span></a></td>
+				<td style="width:98px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=6}">  <span class="Id">6 </span> </a></td>
+
+			</tr>
+			<tr style="height: 25px;">
+				
+			</tr>
+			<tr style="height: 80px;" >					
+				<td style="width:103px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=7}">  <span class="Id">9</span></a></td>
+				<td style="width:95px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=8}">  <span class="Id">8 </span></a></td>
+				<td style="width:110px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=9}">  <span class="Id">9 </span> </a></td>
+				<td style="width:90px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=10}">  <span class="Id">10 </span></a></td>
+				<td style="width:107px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=11}"> <span class="Id">11 </span></a></td>
+				<td style="width:98px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=12}">  <span class="Id">12 </span> </a></td>
+
+			</tr>
+			<tr style="height: 150px;">
+				<td style="width:103px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=13}"> <span class="Id">13 </span></a></td>
+				<td style="width:95px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=14}">  <span class="Id">14 </span> </a></td>
+				<td style="width:110px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=15}">  <span class="Id">15 </span></a></td>
+				<td style="width:90px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=16}">  <span class="Id">16 </span></a></td>
+				<td style="width:107px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=17}">  <span class="Id">17 </span></a></td>
+				<td style="width:98px;"><a class="btn btn-info" th:href="@{/getPatientByRoom?roomID=18}">  <span class="Id">18 </span></a></td>
+			</tr>
+
+			<tr>
+
+			</tr>
+		</table>
+	</div>
+
 		<div class="container">
 			<p style="font-size:1.5vw;">
 					O Watchful-care é um serviço que tem como objetivo principal ajudar na monotorização de idosos feita por profissionais. </p>
@@ -118,4 +161,17 @@
 		</div>
 		
 	</body>
+	<script>
+	 $("td").click(function(){
+        //console.log($(this).text());   
+        //console.log($(this).find("td")); 
+        //console.log($(this).find(".Id").text());         
+        var bedId = $(this).find(".Id").text();      
+        //console.log(bedId)
+        if ( bedId ){
+            window.location = "/getPatientByRoom?roomID="+bedId;
+
+        }
+        
+    });</script>
 </html>

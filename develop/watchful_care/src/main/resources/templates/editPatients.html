@@ -238,7 +238,8 @@ h2{
 								<th> Last Name </th>
 								<th> Age </th>
 								<th> BPM Device ID </th>
-								<th> Temperature Device ID </th>
+                                <th> Temperature Device ID </th>
+                                <th> Room Number </th>
 							</tr>
 							</thead>
 							<tbody>
@@ -250,11 +251,14 @@ h2{
 										th:value="${Patient.getLastName()}" required/></td>
                                 <td><input th:placeholder="Age + ' ' + ${itemStat.count}" th:name="|patients[${itemStat.index}].age|" 
                                         th:value="${Patient.getAge()}" required/></td>
-                                <td><input th:placeholder="lastName + ' ' + ${itemStat.count}" th:name="|patients[${itemStat.index}].bpm_id|"
+                                <td><input th:placeholder="Bpm_id + ' ' + ${itemStat.count}" th:name="|patients[${itemStat.index}].bpm_id|"
                                         th:value="${Patient.getBpm_id()}" required/></td>
-                                <td><input th:placeholder="lastName + ' ' + ${itemStat.count}" th:name="|patients[${itemStat.index}].temp_id|"
+                                <td><input th:placeholder="temp_id + ' ' + ${itemStat.count}" th:name="|patients[${itemStat.index}].temp_id|"
                                         th:value="${Patient.getTemp_id()}" required/></td>
-							</tr>
+                                <td><input th:placeholder="RoomNumber + ' ' + ${itemStat.count}" th:name="|patients[${itemStat.index}].RoomNumber|"
+                                        th:value="${Patient.getRoomNumber()}" required/></td>
+                            </tr>
+                            
 							</tbody>
                         </table>
                         
