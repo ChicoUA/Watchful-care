@@ -18,6 +18,9 @@ public class HelloLIstener {
 	@Autowired
 	private PushNotificationController control;
 	
+	@Autowired
+	private emergencyRepository emergencyRep;
+	
 	@StreamListener(target = HelloBinding.GREETING)
     public void processHelloChannelGreeting(String msg) {
 		
@@ -30,6 +33,8 @@ public class HelloLIstener {
 				System.out.println("Emergency in bpm");
 				String body = "Paciente: "+ p.getFirstName() + " " + p.getLastName() +" está com pulsação anormal! ("+Double.parseDouble(treatedMsg[2])+", "+Double.parseDouble(treatedMsg[3])+")";
 				PushNotificationRequest alertMessage = new PushNotificationRequest("Alerta!!!", body, "common");
+				emergency e = new emergency((int) p.getPatientID(), body);
+				emergencyRep.save(e);
 				control.sendNotification(alertMessage);
 			}
 			if(Double.parseDouble(treatedMsg[4]) <= 15.0) {
@@ -46,6 +51,8 @@ public class HelloLIstener {
 			if(Float.parseFloat(treatedMsg[1]) > 38.0 ||  Float.parseFloat(treatedMsg[1]) < 36.0) {
 				String body = "Paciente: "+p.getFirstName() + " " + p.getLastName()+" está com temperatura anormal!";
 				PushNotificationRequest alertMessage = new PushNotificationRequest("Alerta!!!", body, "common");
+				emergency e = new emergency((int) p.getPatientID(), body);
+				emergencyRep.save(e);
 				control.sendNotification(alertMessage);
 			}
 			if(Double.parseDouble(treatedMsg[2]) <= 15.0) {

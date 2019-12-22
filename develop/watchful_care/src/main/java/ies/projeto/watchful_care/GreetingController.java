@@ -27,6 +27,9 @@ public class GreetingController {
 	@Autowired
 	private temperatureDataRepository temperaturedata;
 	
+	@Autowired
+	private emergencyRepository emergencyRep;
+	
 	@GetMapping("/PatientInfo")
 	 public String Patient(@RequestParam(name="id") long patient_id, @RequestParam(name="bpm") long bpm_id, @RequestParam(name="temperature") long temp_id, @RequestParam(name="date") String date,Model model) {
 		 int counter = 1;
@@ -82,6 +85,17 @@ public class GreetingController {
 				 
 			 }
 		 }
+		 
+		 List<emergency> data3 = emergencyRep.findByPatientId((int)temp_id);
+		 List<emergency> result3 = new ArrayList<>();
+		 for(emergency e : data3) {
+			 String e_date = e.getDatetime().toString().substring(0, 10);
+			 if(e_date.contentEquals(date)) {
+				 
+				 result3.add(e);
+				 
+			 }
+		 }
 		 Patient p = patientRepository.findById(patient_id).orElseThrow();
 		 model.addAttribute("name", p.getFirstName() + " " + p.getLastName());
 		 model.addAttribute("date", date);
@@ -95,6 +109,7 @@ public class GreetingController {
 		 model.addAttribute("bpm_min", minBPM);
 		 model.addAttribute("bpm_max", maxBPM);
 		 model.addAttribute("bpm_mean", BPMsum / beats.size());
+		 model.addAttribute("emergencies", result3);
 
 		 return "Patient";
 	  }

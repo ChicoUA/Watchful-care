@@ -108,7 +108,8 @@ public class RController {
 	@PostMapping("/emergency")
 	public emergency sendEmergency(@Valid @RequestBody emergency e) {
 		System.out.println("Patient Requests Assistance");
-		String body = "Paciente: "+e.getPatientId()+" pediu assistência!";
+		Patient p = patientRepository.findById((long) e.getPatientId()).orElseThrow();
+		String body = "Paciente: "+p.getFirstName() + " " + p.getLastName()+" pediu assistência! Diriga-se ao seu quarto!";
 		PushNotificationRequest alertMessage = new PushNotificationRequest("Alerta!!!", body, "common");
 		control.sendNotification(alertMessage);
 		return emergencyRep.save(e);
